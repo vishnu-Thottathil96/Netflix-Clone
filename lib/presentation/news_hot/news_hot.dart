@@ -12,7 +12,7 @@ class ScreenNewsHot extends StatelessWidget {
       body: SafeArea(
           child: Center(
               child: Text(
-        'News and hot page',
+        'New and hot page',
         style: TextStyle(color: Colors.white),
       ))),
     );

@@ -25,7 +25,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
               BottomNavigationBarItem(
                   icon: Icon(Icons.home_outlined), label: 'Home'),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.collections), label: 'News & Hot'),
+                  icon: Icon(Icons.collections), label: 'New & Hot'),
               BottomNavigationBarItem(
                   icon: Icon(Icons.emoji_emotions_outlined),
                   label: 'Fast Laughs'),
