@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:netflix/presentation/main_page/screen_main_page.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import 'package:netflix/presentation/splash/screen_splash.dart';
 
 import 'core/constant/text_theme.dart';
 
@@ -17,10 +19,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Netflix Clone',
       theme: ThemeData(
+        fontFamily: GoogleFonts.montserrat().fontFamily,
         colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue),
         textTheme: textTheme,
       ),
-      home: const ScreenMainPage(),
+      home: const ScreenSplash(),
     );
   }
 }

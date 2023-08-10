@@ -8,26 +8,28 @@ import 'package:netflix/presentation/news_hot/news_hot.dart';
 import 'package:netflix/presentation/search/screen_search.dart';
 
 class ScreenMainPage extends StatelessWidget {
-  const ScreenMainPage({super.key});
-  final List pages = const [
-    ScreenHome(),
-    ScreenNewsHot(),
-    ScreenFastLaughs(),
-    ScreenSearch(),
-    ScreenDownload(),
+  ScreenMainPage({super.key});
+  final List pages = [
+    const ScreenHome(),
+    const ScreenNewsHot(),
+    const ScreenFastLaughs(),
+    const ScreenSearch(),
+    const ScreenDownload(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
-      body: ValueListenableBuilder(
-        valueListenable: indexChangeNotifier,
-        builder: (context, int value, child) {
-          return pages[value];
-        },
+      body: SafeArea(
+        child: ValueListenableBuilder(
+          valueListenable: indexChangeNotifier,
+          builder: (context, int value, child) {
+            return pages[value];
+          },
+        ),
       ),
-      bottomNavigationBar: BottomNavigationBarWidget(),
+      bottomNavigationBar: const BottomNavigationBarWidget(),
     );
   }
 }
