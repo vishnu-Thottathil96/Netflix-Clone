@@ -60,17 +60,22 @@ class TopSearchItemTile extends StatelessWidget {
                 color: whiteColor, fontWeight: FontWeight.bold, fontSize: 16),
           ),
         ),
-        const CircleAvatar(
-            backgroundColor: whiteColor,
-            radius: 22,
-            child: CircleAvatar(
-              radius: 20,
-              backgroundColor: blackColor,
-              child: Icon(
-                CupertinoIcons.play,
-                color: whiteColor,
-              ),
-            ))
+        const Icon(
+          Icons.play_circle_outline,
+          color: whiteColor,
+          size: 45,
+        )
+        // const CircleAvatar(
+        //     backgroundColor: whiteColor,
+        //     radius: 22,
+        //     child: CircleAvatar(
+        //       radius: 20,
+        //       backgroundColor: blackColor,
+        //       child: Icon(
+        //         CupertinoIcons.play,
+        //         color: whiteColor,
+        //       ),
+        //     ))
       ],
     );
   }
