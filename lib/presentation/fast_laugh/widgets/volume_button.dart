@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class VolumeButton extends StatelessWidget {
-  VolumeButton({super.key});
+  VolumeButton({super.key, this.color = Colors.white});
+  final Color color;
   final ValueNotifier<bool> isVolumeUpNotifier = ValueNotifier<bool>(true);
 
   void toggleIcon() {
@@ -23,6 +24,7 @@ class VolumeButton extends StatelessWidget {
                 ? CupertinoIcons.volume_down
                 : CupertinoIcons.volume_off,
             size: 30,
+            color: color,
           ),
         );
       },

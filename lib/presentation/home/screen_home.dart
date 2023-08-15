@@ -3,10 +3,9 @@ import 'package:flutter/rendering.dart';
 import 'package:netflix/core/colors/colors.dart';
 import 'package:netflix/core/constant/screen_size.dart';
 import 'package:netflix/core/constant/space.dart';
+import 'package:netflix/presentation/home/widgets/appbar_homepage.dart';
 import 'package:netflix/presentation/home/widgets/background_card.dart';
 import 'package:netflix/presentation/home/widgets/number_titlecard.dart';
-import '../../core/constant/text_theme.dart';
-import '../widgets/app_bar_widget.dart';
 import '../widgets/main_title_card.dart';
 
 String homeMainImage =
@@ -47,9 +46,7 @@ class ScreenHome extends StatelessWidget {
                       title: 'Trending Now',
                     ),
                     verticalSpace(ScreenSize.screenHeight / 40),
-                    //
                     const NumberTitleCard(),
-                    //
                     verticalSpace(ScreenSize.screenHeight / 40),
                     const MainTitleCard(
                       title: 'Tense Dramas',
@@ -61,55 +58,7 @@ class ScreenHome extends StatelessWidget {
                   ],
                 ),
                 scrollNotifier.value == true
-                    ? AnimatedContainer(
-                        duration: const Duration(microseconds: 3000),
-                        color: Colors.black.withOpacity(0.5),
-                        width: double.infinity,
-                        height: ScreenSize.screenHeight / 11,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: [
-                                Image(
-                                  image:
-                                      const AssetImage('assets/lmages/N.png'),
-                                  height: ScreenSize.screenHeight / 16,
-                                  width: ScreenSize.screenHeight / 16,
-                                ),
-                                const Spacer(),
-                                Icon(
-                                  Icons.cast,
-                                  color: Colors.white,
-                                  size: ScreenSize.screenHeight / 33,
-                                ),
-                                horizontalSpace(
-                                  ScreenSize.screenHeight / 100,
-                                ),
-                                SizedBox(
-                                  height: ScreenSize.screenHeight / 30,
-                                  width: ScreenSize.screenHeight / 30,
-                                  child: Image.asset(
-                                    'assets/lmages/appbarlogo.png',
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                                horizontalSpace(
-                                  ScreenSize.screenHeight / 100,
-                                ),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Text('TV Shows', style: homeTitleText),
-                                Text('Movies', style: homeTitleText),
-                                Text('Categories', style: homeTitleText),
-                              ],
-                            ),
-                          ],
-                        ),
-                      )
+                    ? const CostomisedDisapearingAppBar()
                     : verticalSpace(ScreenSize.screenHeight / 12)
               ],
             ),
