@@ -49,15 +49,16 @@ class NumberCard extends StatelessWidget {
           ),
           Positioned(
             left: 10,
-            bottom: -28,
+            bottom: -25,
             child: BorderedText(
-              strokeColor: blackColor,
-              strokeWidth: 5.0,
+              strokeColor: whiteColor,
+              strokeWidth: 10.0,
               child: Text(
                 '${index + 1}',
                 style: const TextStyle(
-                  fontSize: 120,
-                ),
+                    fontSize: 130,
+                    color: blackColor,
+                    fontWeight: FontWeight.bold),
               ),
             ),
           ),

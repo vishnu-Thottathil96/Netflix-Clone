@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import '../../../core/colors/colors.dart';
 import '../../../core/constant/screen_size.dart';
 import '../../../core/constant/space.dart';
-import '../screen_download.dart';
 import 'downloads_image_widget.dart';
 
 class Section2 extends StatelessWidget {

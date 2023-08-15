@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Netflix Clone',
+      title: 'Netflix',
       theme: ThemeData(
         fontFamily: GoogleFonts.montserrat().fontFamily,
         colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue),
