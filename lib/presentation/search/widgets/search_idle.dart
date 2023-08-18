@@ -1,18 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:netflix/api/api.dart';
 import 'package:netflix/core/colors/colors.dart';
 import 'package:netflix/core/constant/space.dart';
+import 'package:netflix/models/model_movie.dart';
 import 'package:netflix/presentation/search/widgets/title.dart';
 
+import '../../../core/constant/baseurl.dart';
 import '../../../core/constant/screen_size.dart';
 
-const imageurl =
-    'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/8rpDcsfLJypbO6vREc0547VKqEv.jpg';
+// const imageurl =
+//     'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/8rpDcsfLJypbO6vREc0547VKqEv.jpg';
+ValueNotifier<List<MovieModel>> topSearchNotifier = ValueNotifier([]);
 
 class SearchIdle extends StatelessWidget {
   const SearchIdle({super.key});
+  getTopSearch() async {
+    topSearchNotifier.value = await Api().getTopMovies();
+  }
 
   @override
   Widget build(BuildContext context) {
+    getTopSearch();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -21,13 +29,21 @@ class SearchIdle extends StatelessWidget {
         ),
         verticalSpace(ScreenSize.screenHeight / 50),
         Expanded(
-          child: ListView.separated(
-            shrinkWrap: true,
-            itemBuilder: (context, index) => const TopSearchItemTile(),
-            separatorBuilder: (context, index) =>
-                verticalSpace(ScreenSize.screenHeight / 50),
-            itemCount: 10,
-          ),
+          child: ValueListenableBuilder(
+              valueListenable: topSearchNotifier,
+              builder: (context, value, _) {
+                return ListView.separated(
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    return TopSearchItemTile(
+                      movieModel: value[index],
+                    );
+                  },
+                  separatorBuilder: (context, index) =>
+                      verticalSpace(ScreenSize.screenHeight / 50),
+                  itemCount: topSearchNotifier.value.length,
+                );
+              }),
         )
       ],
     );
@@ -35,7 +51,8 @@ class SearchIdle extends StatelessWidget {
 }
 
 class TopSearchItemTile extends StatelessWidget {
-  const TopSearchItemTile({super.key});
+  const TopSearchItemTile({super.key, required this.movieModel});
+  final MovieModel movieModel;
 
   @override
   Widget build(BuildContext context) {
@@ -44,19 +61,22 @@ class TopSearchItemTile extends StatelessWidget {
         Container(
           width: ScreenSize.screenWidth / 2.4,
           height: ScreenSize.screenHeight / 10,
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(8)),
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.all(Radius.circular(8)),
             image: DecorationImage(
               fit: BoxFit.cover,
-              image: NetworkImage(imageurl),
+              image: NetworkImage(baseUrl + movieModel.backDropPath),
             ),
           ),
         ),
-        const Expanded(
-          child: Text(
-            '   Movie Name',
-            style: TextStyle(
-                color: whiteColor, fontWeight: FontWeight.bold, fontSize: 16),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.only(left: 8.0),
+            child: Text(
+              movieModel.originalTitle,
+              style: const TextStyle(
+                  color: whiteColor, fontWeight: FontWeight.bold, fontSize: 16),
+            ),
           ),
         ),
         const Icon(
@@ -64,17 +84,6 @@ class TopSearchItemTile extends StatelessWidget {
           color: whiteColor,
           size: 45,
         )
-        // const CircleAvatar(
-        //     backgroundColor: whiteColor,
-        //     radius: 22,
-        //     child: CircleAvatar(
-        //       radius: 20,
-        //       backgroundColor: blackColor,
-        //       child: Icon(
-        //         CupertinoIcons.play,
-        //         color: whiteColor,
-        //       ),
-        //     ))
       ],
     );
   }

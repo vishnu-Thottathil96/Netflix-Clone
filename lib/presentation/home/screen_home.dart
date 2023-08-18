@@ -40,20 +40,20 @@ class ScreenHome extends StatelessWidget {
                   physics: const BouncingScrollPhysics(),
                   children: [
                     const BackgroundCard(),
-                    const MainTitleCard(title: 'Released in the Past year'),
+                    const MainTitleCard(title: 'Now Playing'),
                     verticalSpace(ScreenSize.screenHeight / 40),
                     const MainTitleCard(
-                      title: 'Trending Now',
+                      title: 'Popular',
                     ),
                     verticalSpace(ScreenSize.screenHeight / 40),
                     const NumberTitleCard(),
                     verticalSpace(ScreenSize.screenHeight / 40),
                     const MainTitleCard(
-                      title: 'Tense Dramas',
+                      title: 'Upcoming',
                     ),
                     verticalSpace(ScreenSize.screenHeight / 40),
                     const MainTitleCard(
-                      title: 'South Indian Cinema',
+                      title: 'Top Rated',
                     ),
                   ],
                 ),
