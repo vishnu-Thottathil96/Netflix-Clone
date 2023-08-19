@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:netflix/core/constant/baseurl.dart';
+import 'package:netflix/models/model_movie.dart';
 import '../../../core/colors/colors.dart';
 import '../../../core/constant/screen_size.dart';
 import '../screen_home.dart';
 import 'custom_icon.dart';
 
 class BackgroundCard extends StatelessWidget {
-  const BackgroundCard({super.key});
+  const BackgroundCard({
+    super.key,
+    required this.movieUrl,
+  });
+  final String movieUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +22,7 @@ class BackgroundCard extends StatelessWidget {
           height: ScreenSize.screenHeight / 1.3,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: NetworkImage(homeMainImage),
+              image: NetworkImage(baseUrl + movieUrl),
               fit: BoxFit.cover,
             ),
           ),

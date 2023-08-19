@@ -6,6 +6,9 @@ import 'package:netflix/core/constant/space.dart';
 import 'package:netflix/presentation/search/widgets/search_idle.dart';
 import 'package:netflix/presentation/search/widgets/search_result.dart';
 
+import '../../api/api.dart';
+import '../../core/constant/listenables.dart';
+
 class ScreenSearch extends StatelessWidget {
   const ScreenSearch({super.key});
 
@@ -13,10 +16,15 @@ class ScreenSearch extends StatelessWidget {
   Widget build(BuildContext context) {
     ValueNotifier<bool> showSearchResult = ValueNotifier<bool>(false);
     TextEditingController searchController = TextEditingController();
+    getSearchList() async {
+      searchNotifier.value =
+          await Api().getSearchApi(searchKeyWord: searchController.text);
+    }
 
     searchController.addListener(() {
       if (searchController.text.isNotEmpty) {
         showSearchResult.value = true;
+        getSearchList();
       } else {
         showSearchResult.value = false;
       }
@@ -53,10 +61,7 @@ class ScreenSearch extends StatelessWidget {
               builder: (context, value, child) {
                 return value ? const SearchResult() : const SearchIdle();
               },
-            )
-                // SearchIdle(),
-                //SearchResult()
-                ),
+            )),
           ],
         ),
       )),

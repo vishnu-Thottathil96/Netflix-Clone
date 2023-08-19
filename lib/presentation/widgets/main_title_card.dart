@@ -8,20 +8,22 @@ import '../../models/model_movie.dart';
 import 'main_card.dart';
 import 'main_title.dart';
 
-ValueNotifier<List<MovieModel>> nowPlayingNotifier = ValueNotifier([]);
+//  = ValueNotifier([]);
 
 class MainTitleCard extends StatelessWidget {
-  const MainTitleCard({super.key, required this.title});
+  const MainTitleCard(
+      {super.key, required this.title, required this.valueNotifier});
   final String title;
-  getNowPlayingList() async {
-    nowPlayingNotifier.value = await Api().getNowPlaying();
-  }
+  final ValueNotifier<List<MovieModel>> valueNotifier;
+  // getNowPlayingList() async {
+  //   nowPlayingNotifier.value = await Api().getNowPlaying();
+  // }
 
   @override
   Widget build(BuildContext context) {
-    getNowPlayingList();
+    // getNowPlayingList();
     return ValueListenableBuilder(
-        valueListenable: nowPlayingNotifier,
+        valueListenable: valueNotifier,
         builder: (context, value, _) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,7 +37,7 @@ class MainTitleCard extends StatelessWidget {
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: List.generate(
-                    nowPlayingNotifier.value.length,
+                    valueNotifier.value.length,
                     (index) => HomeMainCard(
                       index: index,
                       movieModel: value[index],

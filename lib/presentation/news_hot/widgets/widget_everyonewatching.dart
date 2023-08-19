@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:netflix/core/constant/baseurl.dart';
+import 'package:netflix/models/model_movie.dart';
 
 import '../../../core/colors/colors.dart';
 import '../../../core/constant/space.dart';
@@ -8,27 +10,27 @@ import '../../widgets/video_widget.dart';
 class EveryoneWatching extends StatelessWidget {
   const EveryoneWatching({
     super.key,
+    required this.movie,
   });
-
+  final MovieModel movie;
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         verticalSpace(10),
-        const Text(
-          'Sherlock',
+        Text(
+          movie.originalTitle,
           style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
         ),
         verticalSpace(10),
-        const Text(
-          'The fourth series begins with the nation’s favourite detective, the mercurial Sherlock Holmes, back once more on British soil.',
+        Text(
+          movie.overView,
           style: TextStyle(color: greyColor),
         ),
         verticalSpace(10),
-        const VideoWidget(
-          imageUrl:
-              'https://www.themoviedb.org/t/p/original/4q6TBkY0Ilx7WtV5LX8HRqNHr5J.jpg',
+        VideoWidget(
+          imageUrl: baseUrl + movie.backDropPath,
         ),
         verticalSpace(10),
         Row(

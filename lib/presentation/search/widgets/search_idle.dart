@@ -1,26 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:netflix/api/api.dart';
 import 'package:netflix/core/colors/colors.dart';
 import 'package:netflix/core/constant/space.dart';
 import 'package:netflix/models/model_movie.dart';
 import 'package:netflix/presentation/search/widgets/title.dart';
-
 import '../../../core/constant/baseurl.dart';
+import '../../../core/constant/listenables.dart';
 import '../../../core/constant/screen_size.dart';
-
-// const imageurl =
-//     'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/8rpDcsfLJypbO6vREc0547VKqEv.jpg';
-ValueNotifier<List<MovieModel>> topSearchNotifier = ValueNotifier([]);
 
 class SearchIdle extends StatelessWidget {
   const SearchIdle({super.key});
-  getTopSearch() async {
-    topSearchNotifier.value = await Api().getTopMovies();
-  }
 
   @override
   Widget build(BuildContext context) {
-    getTopSearch();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -30,7 +21,7 @@ class SearchIdle extends StatelessWidget {
         verticalSpace(ScreenSize.screenHeight / 50),
         Expanded(
           child: ValueListenableBuilder(
-              valueListenable: topSearchNotifier,
+              valueListenable: topRatedNotifier,
               builder: (context, value, _) {
                 return ListView.separated(
                   shrinkWrap: true,
@@ -41,7 +32,7 @@ class SearchIdle extends StatelessWidget {
                   },
                   separatorBuilder: (context, index) =>
                       verticalSpace(ScreenSize.screenHeight / 50),
-                  itemCount: topSearchNotifier.value.length,
+                  itemCount: topRatedNotifier.value.length,
                 );
               }),
         )

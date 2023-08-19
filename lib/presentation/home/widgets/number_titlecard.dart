@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:netflix/api/api.dart';
 import 'package:netflix/models/model_movie.dart';
 import '../../../core/constant/screen_size.dart';
 import '../../../core/constant/space.dart';
@@ -12,20 +11,14 @@ class NumberTitleCard extends StatelessWidget {
   const NumberTitleCard({
     super.key,
   });
-  getListOfTopTen() async {
-    List<MovieModel> topMovies = await Api().getTopMovies(); // Await the Future
-    List<MovieModel> topTen = topMovies.take(10).toList();
-    topTenNotifier.value = topTen;
-  }
 
   @override
   Widget build(BuildContext context) {
-    getListOfTopTen();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const MainTitle(
-          title: ('Top 10 Movies'),
+          title: ('Top 10 TV Shows In India Today'),
         ),
         verticalSpace(ScreenSize.screenHeight / 100),
         LimitedBox(
@@ -34,7 +27,7 @@ class NumberTitleCard extends StatelessWidget {
               valueListenable: topTenNotifier,
               builder: (context, value, _) {
                 return ListView.builder(
-                  itemCount: value.length,
+                  itemCount: value.length < 10 ? value.length : 10,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
                     return NumberCard(

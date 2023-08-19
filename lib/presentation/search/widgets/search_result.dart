@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-
+import 'package:netflix/core/constant/baseurl.dart';
+import 'package:netflix/core/constant/listenables.dart';
+import 'package:netflix/models/model_movie.dart';
 import 'package:netflix/presentation/search/widgets/title.dart';
-
 import '../../../core/constant/screen_size.dart';
 import '../../../core/constant/space.dart';
 
-const imageUrl =
-    'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg';
-
 class SearchResult extends StatelessWidget {
-  const SearchResult({super.key});
+  const SearchResult({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,16 +19,25 @@ class SearchResult extends StatelessWidget {
         const SearchTextTitle(title: 'Movies & TV'),
         verticalSpace(ScreenSize.screenHeight / 50),
         Expanded(
-          child: GridView.count(
-            mainAxisSpacing: 10,
-            crossAxisSpacing: 10,
-            crossAxisCount: 3,
-            childAspectRatio: 1.02 / 1.4,
-            shrinkWrap: true,
-            children: List.generate(21, (index) {
-              return const MainCard();
-            }),
-          ),
+          child: ValueListenableBuilder(
+              valueListenable: searchNotifier,
+              builder: (context, value, _) {
+                return GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 10,
+                    crossAxisCount: 3,
+                    childAspectRatio: 1.02 / 1.4,
+                  ),
+                  shrinkWrap: true,
+                  itemBuilder: (context, int index) {
+                    return MainCard(
+                      movie: value[index],
+                    );
+                  },
+                  itemCount: value.length,
+                );
+              }),
         )
       ],
     );
@@ -36,16 +45,19 @@ class SearchResult extends StatelessWidget {
 }
 
 class MainCard extends StatelessWidget {
-  const MainCard({super.key});
-
+  const MainCard({
+    super.key,
+    required this.movie,
+  });
+  final MovieModel movie;
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(8)),
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.all(Radius.circular(8)),
         image: DecorationImage(
           fit: BoxFit.cover,
-          image: NetworkImage(imageUrl),
+          image: NetworkImage(baseUrl + movie.posterPath),
         ),
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:netflix/core/constant/baseurl.dart';
 
 class DownloadsImageWidget extends StatelessWidget {
   const DownloadsImageWidget({
@@ -30,7 +31,7 @@ class DownloadsImageWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
           image: DecorationImage(
             fit: BoxFit.cover,
-            image: NetworkImage(image),
+            image: NetworkImage(baseUrl + image),
           ),
         ),
       ),

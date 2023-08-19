@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
 import '../../core/colors/colors.dart';
+import '../../core/constant/baseurl.dart';
 import '../fast_laugh/widgets/volume_button.dart';
 
 class VideoWidget extends StatelessWidget {
-  const VideoWidget(
-      {super.key,
-      this.imageUrl =
-          'https://www.themoviedb.org/t/p/original/5h0BU8SKCQa14n5nSJH6KWXO5C.jpg'});
+  const VideoWidget({
+    super.key,
+    required this.imageUrl,
+  });
   final String imageUrl;
 
   @override
@@ -20,7 +21,7 @@ class VideoWidget extends StatelessWidget {
           height: 300,
           child: Image(
             fit: BoxFit.cover,
-            image: NetworkImage(imageUrl),
+            image: NetworkImage(baseUrl + imageUrl),
           ),
         ),
         Positioned(

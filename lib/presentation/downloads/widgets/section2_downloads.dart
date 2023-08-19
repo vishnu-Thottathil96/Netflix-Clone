@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:netflix/core/constant/listenables.dart';
 
 import '../../../core/colors/colors.dart';
 import '../../../core/constant/screen_size.dart';
@@ -12,12 +13,6 @@ class Section2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List imageList = [
-      "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
-      "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/zSqJ1qFq8NXFfi7JeIYMlzyR0dx.jpg",
-      "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
-    ];
-
     return Column(
       children: [
         const Text(
@@ -43,21 +38,21 @@ class Section2 extends StatelessWidget {
                 radius: ScreenSize.screenWidth / 2.6,
               ),
               DownloadsImageWidget(
-                image: imageList[0],
+                image: popularNotifier.value[8].posterPath,
                 margin: const EdgeInsets.only(left: 130, bottom: 45),
                 angle: 22 * pi / 180,
                 height: ScreenSize.screenWidth / 1.8,
                 width: ScreenSize.screenWidth / 2.7,
               ),
               DownloadsImageWidget(
-                image: imageList[1],
+                image: popularNotifier.value[5].posterPath,
                 margin: const EdgeInsets.only(right: 130, bottom: 45),
                 angle: -22 * pi / 180,
                 height: ScreenSize.screenWidth / 1.8,
                 width: ScreenSize.screenWidth / 2.7,
               ),
               DownloadsImageWidget(
-                image: imageList[2],
+                image: popularNotifier.value[4].posterPath,
                 margin: const EdgeInsets.all(0),
                 height: ScreenSize.screenWidth / 1.59,
                 width: ScreenSize.screenWidth / 2.4,

@@ -13,6 +13,10 @@ class Api {
       "https://api.themoviedb.org/3/movie/popular?api_key=${Keys.apiKey}";
   static const _upcomingUrl =
       "https://api.themoviedb.org/3/movie/upcoming?api_key=${Keys.apiKey}";
+  static const _top10InIndiaToday =
+      "https://api.themoviedb.org/3/discover/tv?api_key=${Keys.apiKey}&with_original_language=hi&sort_by=popularity.desc";
+  static const _searchMovie =
+      "https://api.themoviedb.org/3/search/movie?api_key=${Keys.apiKey}&query=";
 
   Future<List<MovieModel>> getTopMovies() async {
     final response = await http.get(Uri.parse(_topSearchesUrl));
@@ -53,6 +57,28 @@ class Api {
       final decodedData = json.decode(response.body);
       final upcomingList = decodedData['results'] as List;
       return upcomingList.map((movie) => MovieModel.fromJson(movie)).toList();
+    } else {
+      throw Exception("Failed to load movies");
+    }
+  }
+
+  Future<List<MovieModel>> top10InIndiaToday() async {
+    final response = await http.get(Uri.parse(_top10InIndiaToday));
+    if (response.statusCode == 200) {
+      final decodedData = json.decode(response.body);
+      final upcomingList = decodedData['results'] as List;
+      return upcomingList.map((movie) => MovieModel.fromJson(movie)).toList();
+    } else {
+      throw Exception("Failed to load movies");
+    }
+  }
+
+  Future<List<MovieModel>> getSearchApi({required String searchKeyWord}) async {
+    final response = await http.get(Uri.parse(_searchMovie + searchKeyWord));
+    if (response.statusCode == 200) {
+      final decodedData = json.decode(response.body);
+      final searchedList = decodedData['results'] as List;
+      return searchedList.map((movie) => MovieModel.fromJson(movie)).toList();
     } else {
       throw Exception("Failed to load movies");
     }

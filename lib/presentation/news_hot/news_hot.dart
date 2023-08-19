@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:netflix/core/colors/colors.dart';
+import 'package:netflix/core/constant/listenables.dart';
 import 'package:netflix/presentation/news_hot/widgets/appbar_with_tabs.dart';
 import 'package:netflix/presentation/news_hot/widgets/coming_soon.dart';
 import 'package:netflix/presentation/news_hot/widgets/widget_everyonewatching.dart';
 
 class ScreenNewsHot extends StatelessWidget {
-  const ScreenNewsHot({super.key});
+  const ScreenNewsHot({super.key, required});
 
   @override
   Widget build(BuildContext context) {
@@ -28,21 +29,29 @@ class ScreenNewsHot extends StatelessWidget {
   Widget _buildEveryoneWatching() {
     return ListView.builder(
       itemBuilder: (context, index) {
-        return const EveryoneWatching();
+        return EveryoneWatching(
+          movie: popularNotifier.value[index],
+        );
       },
-      itemCount: 10,
+      itemCount: popularNotifier.value.length,
     );
   }
 
   Widget _buildComingSoon() {
     return Padding(
       padding: const EdgeInsets.only(top: 8.0),
-      child: ListView.builder(
-        itemBuilder: (context, index) {
-          return const ComingSoonWidget();
-        },
-        itemCount: 10,
-      ),
+      child: ValueListenableBuilder(
+          valueListenable: upcomingNotifier,
+          builder: (context, value, _) {
+            return ListView.builder(
+              itemBuilder: (context, index) {
+                return ComingSoonWidget(
+                  movie: value[index],
+                );
+              },
+              itemCount: 10,
+            );
+          }),
     );
   }
 }

@@ -32,7 +32,7 @@ class ScreenSplash extends StatelessWidget {
   }
 
   void splashNavigate(context) async {
-    await Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 0));
     Navigator.pushReplacement(
         context,
         MaterialPageRoute(
