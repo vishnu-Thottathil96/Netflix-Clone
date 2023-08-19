@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:netflix/core/constant/baseurl.dart';
 import 'package:netflix/core/constant/screen_size.dart';
 import 'package:netflix/core/constant/space.dart';
+import 'package:netflix/models/model_movie.dart';
 import 'package:netflix/presentation/fast_laugh/widgets/video_actionwidget.dart';
 import 'package:netflix/presentation/fast_laugh/widgets/volume_button.dart';
 
-List pageViewimages = [
-  'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/20f2GThu22hp5MgCA4dg3bZ3gTS.jpg',
-  'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/zrwNvkdYXrgFea41AxhJhIKopov.jpg',
-  'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/A4YcCSEplajvidu3PuzvwpGFBWb.jpg',
-  'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/vqslbmy5xvnNf5uGcvwWAqq4us4.jpg',
-  'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/aKDgEKLZ41S54y4UdPJB6RKZ7lM.jpg',
-];
-
 class VideoListItem extends StatelessWidget {
-  final int index;
-  const VideoListItem({super.key, required this.index});
+  final MovieModel movie;
+  const VideoListItem({
+    super.key,
+    required this.movie,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,11 +23,10 @@ class VideoListItem extends StatelessWidget {
             image: DecorationImage(
               fit: BoxFit.cover,
               image: NetworkImage(
-                pageViewimages[index],
+                baseUrl + movie.posterPath,
               ),
             ),
           ),
-          //color: Colors.accents[index % Colors.accents.length],
         ),
         Align(
           alignment: Alignment.bottomCenter,
@@ -54,7 +50,7 @@ class VideoListItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     CircleAvatar(
-                      backgroundImage: NetworkImage(pageViewimages[index]),
+                      backgroundImage: NetworkImage(baseUrl + movie.posterPath),
                       radius: 30,
                     ),
                     verticalSpace(10),
