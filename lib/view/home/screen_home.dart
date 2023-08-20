@@ -2,15 +2,15 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:netflix/api/api.dart';
+import 'package:netflix/controller/api/api.dart';
 import 'package:netflix/core/colors/colors.dart';
 import 'package:netflix/core/constant/listenables.dart';
 import 'package:netflix/core/constant/screen_size.dart';
 import 'package:netflix/core/constant/space.dart';
 import 'package:netflix/models/model_movie.dart';
-import 'package:netflix/presentation/home/widgets/appbar_homepage.dart';
-import 'package:netflix/presentation/home/widgets/background_card.dart';
-import 'package:netflix/presentation/home/widgets/number_titlecard.dart';
+import 'package:netflix/view/home/widgets/appbar_homepage.dart';
+import 'package:netflix/view/home/widgets/background_card.dart';
+import 'package:netflix/view/home/widgets/number_titlecard.dart';
 import '../widgets/main_title_card.dart';
 
 ValueNotifier<bool> scrollNotifier = ValueNotifier(true);

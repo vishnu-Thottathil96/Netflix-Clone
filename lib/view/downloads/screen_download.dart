@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:netflix/core/colors/colors.dart';
-import 'package:netflix/presentation/downloads/widgets/section2_downloads.dart';
-import 'package:netflix/presentation/downloads/widgets/section3_downloads.dart';
-import 'package:netflix/presentation/widgets/app_bar_widget.dart';
+import 'package:netflix/view/downloads/widgets/section2_downloads.dart';
+import 'package:netflix/view/downloads/widgets/section3_downloads.dart';
+import 'package:netflix/view/widgets/app_bar_widget.dart';
 import '../../core/constant/space.dart';
 
 class ScreenDownload extends StatelessWidget {

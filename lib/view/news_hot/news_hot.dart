@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:netflix/core/colors/colors.dart';
 import 'package:netflix/core/constant/listenables.dart';
-import 'package:netflix/presentation/news_hot/widgets/appbar_with_tabs.dart';
-import 'package:netflix/presentation/news_hot/widgets/coming_soon.dart';
-import 'package:netflix/presentation/news_hot/widgets/widget_everyonewatching.dart';
+import 'package:netflix/view/news_hot/widgets/appbar_with_tabs.dart';
+import 'package:netflix/view/news_hot/widgets/coming_soon.dart';
+import 'package:netflix/view/news_hot/widgets/widget_everyonewatching.dart';
 
 class ScreenNewsHot extends StatelessWidget {
   const ScreenNewsHot({super.key, required});

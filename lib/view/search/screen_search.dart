@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:netflix/controller/debouncer/debouncer.dart';
 import 'package:netflix/core/colors/colors.dart';
 import 'package:netflix/core/constant/screen_size.dart';
 import 'package:netflix/core/constant/space.dart';
-import 'package:netflix/presentation/search/widgets/search_idle.dart';
-import 'package:netflix/presentation/search/widgets/search_result.dart';
+import 'package:netflix/view/search/widgets/search_idle.dart';
+import 'package:netflix/view/search/widgets/search_result.dart';
 
-import '../../api/api.dart';
+import '../../controller/api/api.dart';
 import '../../core/constant/listenables.dart';
 
 class ScreenSearch extends StatelessWidget {
@@ -17,8 +18,11 @@ class ScreenSearch extends StatelessWidget {
     ValueNotifier<bool> showSearchResult = ValueNotifier<bool>(false);
     TextEditingController searchController = TextEditingController();
     getSearchList() async {
-      searchNotifier.value =
-          await Api().getSearchApi(searchKeyWord: searchController.text);
+      final debouncer = Debouncer(delay: const Duration(milliseconds: 1000));
+      debouncer.call(() async {
+        return searchNotifier.value =
+            await Api().getSearchApi(searchKeyWord: searchController.text);
+      });
     }
 
     searchController.addListener(() {

@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:netflix/models/model_movie.dart';
 import 'package:http/http.dart' as http;
-import '../core/constant/api_key.dart';
+import '../../core/constant/api_key.dart';
 
 class Api {
   static const _topSearchesUrl =

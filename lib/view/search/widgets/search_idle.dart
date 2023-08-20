@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:netflix/core/colors/colors.dart';
 import 'package:netflix/core/constant/space.dart';
 import 'package:netflix/models/model_movie.dart';
-import 'package:netflix/presentation/search/widgets/title.dart';
+import 'package:netflix/view/search/widgets/title.dart';
 import '../../../core/constant/baseurl.dart';
 import '../../../core/constant/listenables.dart';
 import '../../../core/constant/screen_size.dart';

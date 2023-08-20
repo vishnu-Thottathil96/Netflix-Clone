@@ -3,8 +3,8 @@ import 'package:netflix/core/constant/baseurl.dart';
 import 'package:netflix/core/constant/screen_size.dart';
 import 'package:netflix/core/constant/space.dart';
 import 'package:netflix/models/model_movie.dart';
-import 'package:netflix/presentation/fast_laugh/widgets/video_actionwidget.dart';
-import 'package:netflix/presentation/fast_laugh/widgets/volume_button.dart';
+import 'package:netflix/view/fast_laugh/widgets/video_actionwidget.dart';
+import 'package:netflix/view/fast_laugh/widgets/volume_button.dart';
 
 class VideoListItem extends StatelessWidget {
   final MovieModel movie;

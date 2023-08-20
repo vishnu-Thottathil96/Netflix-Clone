@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:netflix/presentation/splash/screen_splash.dart';
+import 'package:netflix/view/splash/screen_splash.dart';
 
 import 'core/constant/text_theme.dart';
 

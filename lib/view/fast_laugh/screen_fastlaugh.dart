@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflix/core/colors/colors.dart';
-import 'package:netflix/presentation/fast_laugh/widgets/video_list_item.dart';
+import 'package:netflix/view/fast_laugh/widgets/video_list_item.dart';
 
 import '../../core/constant/listenables.dart';
 
