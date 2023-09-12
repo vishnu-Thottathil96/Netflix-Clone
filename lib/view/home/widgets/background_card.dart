@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:netflix/core/constant/baseurl.dart';
-import 'package:netflix/models/model_movie.dart';
 import '../../../core/colors/colors.dart';
 import '../../../core/constant/screen_size.dart';
-import '../screen_home.dart';
+
 import 'custom_icon.dart';
 
 class BackgroundCard extends StatelessWidget {

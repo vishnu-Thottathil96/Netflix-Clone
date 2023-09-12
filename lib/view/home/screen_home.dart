@@ -7,7 +7,7 @@ import 'package:netflix/core/colors/colors.dart';
 import 'package:netflix/core/constant/listenables.dart';
 import 'package:netflix/core/constant/screen_size.dart';
 import 'package:netflix/core/constant/space.dart';
-import 'package:netflix/models/model_movie.dart';
+
 import 'package:netflix/view/home/widgets/appbar_homepage.dart';
 import 'package:netflix/view/home/widgets/background_card.dart';
 import 'package:netflix/view/home/widgets/number_titlecard.dart';

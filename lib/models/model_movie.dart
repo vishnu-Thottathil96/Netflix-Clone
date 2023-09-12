@@ -36,6 +36,7 @@ class MovieModel {
 
 
 
+
 /* adult	false
 backdrop_path	"/rSPw7tgCH9c6NqICZef4kZjFOQ5.jpg"
 genre_ids	
