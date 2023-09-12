@@ -25,7 +25,7 @@ class Api {
       final topSearchList = decodedData['results'] as List;
       return topSearchList.map((movie) => MovieModel.fromJson(movie)).toList();
     } else {
-      throw Exception('Failed to load top movies');
+      throw Exception('Failed to load top Movies');
     }
   }
 
